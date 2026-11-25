@@ -19,7 +19,6 @@
 </head>
 <body>
 <!-- Laetitia · HospitalitIA : page d'accueil « IA pour hôteliers ».
-     À coller tel quel dans un élément « Code HTML » d'une page Systeme.io vierge.
      Tous les styles sont limités au bloc .smia pour ne rien casser autour. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,9 +121,20 @@
 html{scroll-behavior:smooth}
 .smia section[id]{scroll-margin-top:76px}
 .smia .entete{position:sticky;top:0;z-index:20;background:rgba(246,240,230,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--ligne);padding-inline:20px}
-.smia .entete .nav{margin:0 auto;padding-block:10px;flex-wrap:nowrap}
+.smia .entete .nav{margin:0 auto;padding-block:10px;flex-wrap:nowrap;max-width:1120px}
+.smia .entete .nav-liens{flex-wrap:nowrap}
+@media (max-width:1160px){
+  .smia .entete .nav{flex-wrap:wrap;gap:0 16px}
+  .smia .entete nav{flex:1 0 100%}
+  .js .smia .menu-btn{display:block}
+  .js .smia .nav-liens{display:none;flex:1 0 100%;flex-direction:column;align-items:stretch;gap:0;padding-top:6px}
+  .js .smia .nav-liens.ouvert{display:flex}
+  .smia .nav-liens a{padding:12px 4px;font-size:17px;border-top:1px solid var(--ligne)}
+  .smia .nav-liens a.btn-nav{margin:10px 0 4px;text-align:center;border-top:0}
+  .smia .nav-liens a.btn-guide{margin:10px 0 0;text-align:center;border-top:1.5px solid #8a2432}
+}
 .smia .entete .marque img{height:40px}
-.smia .nav-liens{display:flex;align-items:center;gap:6px 22px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.smia .nav-liens{display:flex;align-items:center;gap:6px 18px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
 .smia .nav-liens a{display:block;padding:8px 0;color:var(--olive);font-size:15px;line-height:22px;font-weight:500;text-decoration:none;white-space:nowrap}
 .smia .nav-liens a:hover{color:var(--terracotta)}
 .smia .menu-btn{display:none;background:none;border:1.5px solid var(--olive);border-radius:999px;color:var(--olive);font:500 15px/22px var(--sans);padding:9px 18px;min-height:44px;cursor:pointer}
@@ -260,8 +270,10 @@ html{scroll-behavior:smooth}
 .smia .bandeau-cles>div{flex:1 1 420px;min-width:0}
 .smia .bandeau-cles .btn-ligne{flex:0 0 auto}
 /* Menu : bouton diagnostic, et échelle des offres en 3 marches */
-.smia .nav-liens a.btn-nav{background:var(--terracotta);color:#fff;border-radius:999px;padding:9px 18px;margin-left:6px}
+.smia .nav-liens a.btn-nav{background:var(--terracotta);color:#fff;border-radius:999px;padding:9px 18px;margin-left:0}
 .smia .nav-liens a.btn-nav:hover{background:var(--terracotta-fonce);color:#fff}
+.smia .nav-liens a.btn-guide{border:1.5px solid #8a2432;color:#8a2432;border-radius:999px;padding:7.5px 16px}
+.smia .nav-liens a.btn-guide:hover{background:#8a2432;color:#fff}
 .smia .marche-num{display:block;margin:40px 0 0;font-size:13px;line-height:18px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--douce)}
 .smia .marche-num b{color:var(--olive);font-weight:600}
 .smia .boite{display:grid;grid-template-columns:1fr auto;gap:12px 40px;align-items:center;margin-top:12px;background:var(--carte);border:1px solid var(--ligne);border-radius:18px;padding:30px 32px}
@@ -274,7 +286,7 @@ html{scroll-behavior:smooth}
 .smia .boite .btn-ligne:hover{background:#8A2432;color:#fff}
 .smia .marche-num + .entree{margin-top:12px}
 .smia .solo{margin-top:24px;color:var(--douce)}
-@media (max-width:760px){.smia .boite{grid-template-columns:1fr;padding:24px 22px}.smia .boite .prix-entree{text-align:left}.smia .nav-liens a.btn-nav{margin:10px 0 4px;text-align:center;border-top:0}}
+@media (max-width:760px){.smia .boite{grid-template-columns:1fr;padding:24px 22px}.smia .boite .prix-entree{text-align:left}.smia .nav-liens a.btn-nav{margin:10px 0 4px;text-align:center;border-top:0}.smia .nav-liens a.btn-guide{margin:10px 0 0;text-align:center;border-top:1.5px solid #8a2432}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 
@@ -290,6 +302,7 @@ html{scroll-behavior:smooth}
         <li><a href="#qui-je-suis">Qui je suis</a></li>
         <li><a href="#offres">Mes offres</a></li>
         <li><a href="#comment">Comment ça se passe</a></li>
+        <li><a class="btn-guide" href="/guide-gratuit/">Guide gratuit</a></li>
         <li><a class="btn-nav" href="https://diagnostic.studio-mibo.com/">Faire le diagnostic</a></li>
       </ul>
     </nav>
